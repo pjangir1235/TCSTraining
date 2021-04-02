@@ -1,0 +1,110 @@
+<!DOCTYPE HTML>
+<h2 align="center">Customer List</h2>
+
+<div class="container">
+	<form [formGroup]="viewCustomerForm" (ngSubmit)="getCustomers()">
+		<div class="row text-center">
+			<div class="col-sm-2">
+				<label>Search By</label>
+			</div>
+
+			<div class="col-sm-4">
+				<select class="form-control" id="filter_option" name="filter_option"
+					formControlName="filter_option" #filter_option>
+
+					<option value="SSN_ID" selected="selected">SSN</option>
+					<option value="NAME">Name</option>
+					<option value="CONTACT">Contact No</option>
+					<option value="EMAIL">Email</option>
+					<option value="STATUS">Status</option>
+					<option value="ALL">View All</option>
+				</select>
+			</div>
+
+
+
+			<div class="col-sm-4"
+				*ngIf="filter_option.value!='ALL' && filter_option.value!='STATUS'">
+				<input type="text" class="form-control" id="filter_text"
+					[value]="searchValue" formControlName="filter_text"
+					placeholder="Search..." required #filter_text>
+			</div>
+
+			<div class="col-sm-4" *ngIf="filter_option.value=='STATUS'">
+				<select class="form-control" id="filter_text"
+					formControlName="filter_text">
+					<option value="ACTIVE">ACTIVE</option>
+					<option value="INACTIVE		">INACTIVE</option>
+				</select>
+			</div>
+
+
+			<div class="col-sm-2">
+				<input type="submit" class="form-control btn btn-primary"
+					value="Search">
+			</div>
+
+		</div>
+	</form>
+</div>
+<label style="display: block; text-align: center" *ngIf="status"></label>
+<table id="table_id" class="table" *ngIf="response && response.status" align="left">
+
+	<thead>
+		<tr >
+			<!-- <th>S.No</th>
+			 --><th>Customer ID</th>
+			<th>Name</th>
+			<th>SSN</th>
+			<th>Contact</th>
+			<th>Email</th>
+			<th>Account Status</th>
+			<!-- <th>Last Updated</th> -->
+			<th></th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+
+		<tr *ngFor="let customer of pagedItems , let i = index" align="left">
+			<!-- <td>{{i+1}}</td>
+			 --><td>{{customer.customerId}}</td>
+			<td>{{customer.name}}</td>
+			<td>{{customer.ssnId}}</td>
+			<td>{{customer.contact}}</td>
+			<td>{{customer.email}}</td>
+			<td [ngClass]="customer.currentStatus=='ACTIVE'?'active':'inactive'">{{customer.currentStatus}}</td>
+			<!-- <td>{{customer.lastUpdated}}</td> -->
+			<td><button class="btn btn-primary"
+					[routerLink]="['/updateCustomer',customer.customerId]"
+					[disabled]="customer.currentStatus=='INACTIVE'">Update</button></td>
+			<td><button class="btn btn-danger"
+					[routerLink]="['/deleteCustomer',customer.customerId]"
+					[disabled]="customer.currentStatus=='INACTIVE'">Delete</button></td>
+		</tr>
+
+	</tbody>
+
+</table>
+<div class="container text-center">
+	<ul *ngIf="pager.pages && pager.pages.length" class="pagination">
+		<li [ngClass]="{disabled:pager.currentPage === 1}"><a
+			(click)="setPage(1)">First</a></li>
+		<li [ngClass]="{disabled:pager.currentPage === 1}"><a
+			(click)="setPage(pager.currentPage - 1)">Previous</a></li>
+		<li *ngFor="let page of pager.pages"
+			[ngClass]="{active:pager.currentPage === page}"><a
+			(click)="setPage(page)">{{page}}</a></li>
+		<li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+			<a (click)="setPage(pager.currentPage + 1)">Next</a>
+		</li>
+		<li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+			<a (click)="setPage(pager.totalPages)">Last</a>
+		</li>
+	</ul>
+</div>
+
+<h4 *ngIf="response">
+	<label *ngIf="!response.status">No Data Found</label>
+</h4>
+

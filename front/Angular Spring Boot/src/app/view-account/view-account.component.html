@@ -1,0 +1,108 @@
+<h2 align="center">Account List</h2>
+
+<div class="center_div">
+	<form [formGroup]="viewAccountForm" (ngSubmit)="getAccounts()">
+		<div class="row text-center">
+			<div class="col-sm-2">
+				<label>Search By</label>
+			</div>
+
+			<div class="col-sm-4">
+				<select class="form-control" id="filter_option" name="filter_option"
+					formControlName="filter_option" #filter_option>
+
+					<option value="CUSTOMER_ID" selected>Customer ID</option>
+					<option value="ACCOUNT_NUMBER">Account Number</option>
+					<option value="STATUS">Status</option>
+
+					<option value="ALL">View All</option>
+				</select>
+			</div>
+
+
+
+			<div class="col-sm-4"
+				*ngIf="filter_option.value!='ALL' && filter_option.value!='STATUS'">
+				<input type="text" class="form-control" id="filter_text"
+					[value]="searchValue" formControlName="filter_text"
+					placeholder="Search..." required #filter_text>
+			</div>
+
+			<div class="col-sm-4" *ngIf="filter_option.value=='STATUS'">
+				<select class="form-control" id="filter_text"
+					formControlName="filter_text">
+					<option value="active">ACTIVE</option>
+					<option value="inactive">INACTIVE</option>
+				</select>
+			</div>
+			<div class="col-sm-2">
+				<input type="submit" class="form-control btn btn-primary"
+					value="Search">
+			</div>
+
+		</div>
+	</form>
+</div>
+
+
+
+<label style="display: block; text-align: center" *ngIf="status"></label>
+<table id="table_id" class="table" *ngIf="response && response.status">
+
+	<thead>
+		<tr>
+			<th>S.No</th>
+			<th>Customer Id</th>
+			<th>Customer Name</th>
+
+			<th>Account Number</th>
+			<th>Balance($)</th>
+			<th>Account Type</th>
+			<th>Account Status</th>
+			<th>Last Updated</th>
+			<th>Delete</th>
+		</tr>
+	</thead>
+	<tbody>
+
+		<tr *ngFor="let account of pagedItems , let i = index" align="left">
+			<td>{{i+1}}</td>
+			<td>{{account.customerID}}</td>
+			<td>{{account.customer.name}}</td>
+
+			<td>{{account.accountNumber}}</td>
+			<td><strong>{{convertToFloat(account.balance)}}</strong></td>
+			<td>{{account.type.typeName}}</td>
+			<td [ngClass]="account.accountStatus=='ACTIVE'?'active':'inactive'">{{account.accountStatus}}</td>
+			<td>{{account.lastUpdated}}</td>
+
+			<td><button class="btn btn-danger"
+					[disabled]="!(account.accountStatus=='ACTIVE')"
+					[routerLink]="['/deleteAccount',account.accountNumber]">Delete</button></td>
+		</tr>
+
+	</tbody>
+
+</table>
+<div class="container text-center">
+	<ul *ngIf="pager.pages && pager.pages.length" class="pagination">
+		<li [ngClass]="{disabled:pager.currentPage === 1}"><a
+			(click)="setPage(1)">First</a></li>
+		<li [ngClass]="{disabled:pager.currentPage === 1}"><a
+			(click)="setPage(pager.currentPage - 1)">Previous</a></li>
+		<li *ngFor="let page of pager.pages"
+			[ngClass]="{active:pager.currentPage === page}"><a
+			(click)="setPage(page)">{{page}}</a></li>
+		<li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+			<a (click)="setPage(pager.currentPage + 1)">Next</a>
+		</li>
+		<li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+			<a (click)="setPage(pager.totalPages)">Last</a>
+		</li>
+	</ul>
+</div>
+
+<h4 *ngIf="response">
+	<label *ngIf="!response.status" style="padding: 20px">No Data
+		Found</label>
+</h4>

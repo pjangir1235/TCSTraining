@@ -1,0 +1,72 @@
+<div style="text-align: center overflow-x:auto;">
+	<h3>Customer Details</h3>
+
+	<table *ngIf="cust;" width="45%" align="center">
+
+		<tr>
+			<td>Customer ID</td>
+			<td>{{response.object.customerId}}</td>
+		</tr>
+		<tr>
+			<td>SSN ID</td>
+			<td>{{cust.ssnId}}</td>
+		</tr>
+		<tr>
+			<td>Name</td>
+			<td>{{cust.name}}</td>
+		</tr>
+		<tr>
+			<td>DOB*</td>
+			<td>{{cust.dob}}</td>
+		</tr>
+		<tr>
+			<td>E-mail</td>
+			<td>{{cust.email}}</td>
+		</tr>
+		<tr>
+			<td>Contact</td>
+			<td>{{cust.contact}}</td>
+		</tr>
+		<tr>
+			<td>Current Status</td>
+			<td>{{cust.currentStatus}}</td>
+		</tr>
+		<tr>
+			<td>Address</td>
+			<td>{{cust.address1}}<br>{{cust.address2}}
+			</td>
+		</tr>
+		<tr>
+			<td>City</td>
+			<td>{{cust.city}}</td>
+		</tr>
+		<tr>
+			<td>Pincode</td>
+			<td>{{cust.pincode}}</td>
+		</tr>
+		<tr>
+			<td>DOC**</td>
+			<td>{{cust.doc}}</td>
+		</tr>
+		<tr>
+			<td>Last Updated</td>
+			<td>{{cust.lastUpdated}}</td>
+		</tr>
+		<tr>
+			<td colspan="2">
+				<button type="button" class="btn btn-danger" (click)="confirmDeleteCustomer(cust.customerId)">Delete</button>
+				<button type="button" class="btn btn-primary" [routerLink]="['/viewCustomer']">Cancel</button>
+
+			</td>
+		</tr>
+
+	</table>
+	<span style="font-size:11px; margin-left:-25%">* Date Of Birth ** Date Of creation</span>
+	
+
+	<span style="color: green; font-size: 15px;" >{{message}}</span> <span
+		style="color: red; font-size: 15px; padding:12px;" >{{errorMessage}}</span>
+
+
+
+</div>

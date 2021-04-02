@@ -1,0 +1,103 @@
+.col-sm-4 {
+	text-align: left;
+}
+
+.result_data{
+	width: 80vw;
+	margin: 0 auto;
+	display: block;
+}
+
+
+.result_data tr{
+	width: 100%;
+}
+
+.result_data td{
+	    min-width: 20%;
+    border-right: 1px solid gray;
+    text-align: left;
+    padding: 10px;
+    padding-left: 50px;
+}
+
+
+table{
+	width:80%;
+	margin: 0 auto
+}
+
+table tr{
+	border: 1px solid gray;
+}
+
+table td{
+	color: black;
+	min-width: 20%;
+    border-right: 1px solid gray;
+    text-align: left;
+    padding: 10px;
+    padding-left: 50px;
+
+}
+
+form{
+	margin:5vh auto 0 auto;
+	width: 60%;
+	background: white;
+	padding-bottom:5vh;
+	position:relative;
+	box-shadow: 1px 2px 4px 0 grey;
+	min-height: 60vh;
+	border-radius: 2px;
+	overflow:hidden;
+}
+
+.form_col_1{
+	border-right:1px solid rgba(0,0,0,0.2);
+	width: 1px;
+	height:95%;
+	position: absolute;
+	top:0;
+	right:0;
+}
+
+#validField{
+	border:1px solid rgba(46, 204, 113,0.5);
+	box-shadow: 0 2px 4px 0 rgba(46, 204, 113,0.2);
+}
+
+#invalidField{
+	box-shadow: 0 1px 4px 0 rgba(231, 76, 60,0.4);
+	border:1px solid rgba(231, 76, 60,0.4);
+}
+
+.form_heading{
+	transform: translateY(-4vh);
+	height:12vh;
+	padding-top: 3%;
+	background: rgb(53, 59, 72);
+	color:white;
+	border-radius: 2px;
+	box-shadow: 0 1px 1px 0 rgba(0,0,0,0.5);
+}
+
+form input,select{
+	width: 80%;
+	margin: 1vh auto;
+	box-shadow: 0 1px 2px 0 rgba();
+}
+
+form input::placeholder{
+	font-weight: 500;
+}
+
+form label{
+	font-weight: 200;
+	text-align: left;
+	display:block;
+	padding-left: 2.5vw;
+	font-weight:500;
+}
+
+

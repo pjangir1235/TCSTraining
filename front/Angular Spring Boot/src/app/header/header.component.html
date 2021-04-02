@@ -1,0 +1,32 @@
+<!-- 
+<div class="headerLeft">
+
+	<div class="iconDesign">
+		<img src="../assets/ico.png" height="50px;">
+	</div>
+	<div class="headerDesign">Retail Bank Management System</div>
+</div>
+<div class="headerMiddle">
+	<span><h6>Hello, &nbsp;{{userName}}</h6></span> <span><h6>Last
+			Log in : {{loginTime}}</h6></span>
+
+</div>
+<div class="headerRight">
+	<a class="button" (click)="logout()">Sign Out</a>
+</div>
+
+ --><div class="header"> 
+		<!-- <span class="logo"><img src="../assets/ico.png"></span>
+		 --><h2 class="bank_name"> ABC Bank</h2>
+		
+
+	<div class="header_left_content" *ngIf="userName">
+		<svg (click)="logout()" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" version="1.1" style="shape-rendering:geometricPrecision;text-rendering:geometricPrecision;image-rendering:optimizeQuality;" viewBox="0 0 8287 10358.75" x="0px" y="0px" fill-rule="evenodd" clip-rule="evenodd"><defs><style type="text/css">.fil1 {}.fil0 {fill-rule:nonzero}</style></defs><g><path class="fil0" d="M4144 0c2288,0 4143,1855 4143,4144 0,2288 -1855,4143 -4143,4143 -2289,0 -4144,-1855 -4144,-4143 0,-2289 1855,-4144 4144,-4144zm2340 1803c-1292,-1293 -3388,-1293 -4681,0 -1293,1293 -1293,3389 0,4681 1293,1293 3389,1293 4681,0 1293,-1292 1293,-3388 0,-4681z"/><path class="fil1" d="M4410 1813l0 1401c0,354 -532,347 -532,0l0 -1401c0,-349 532,-349 532,0z"/><path class="fil0" d="M4826 2873c-313,-185 -31,-662 283,-477 573,339 934,958 934,1635 0,1049 -851,1899 -1899,1899 -1049,0 -1899,-850 -1899,-1899 0,-677 361,-1296 934,-1635 313,-185 595,292 282,477 -757,448 -888,1488 -267,2108 524,525 1375,525 1900,0 620,-620 490,-1660 -268,-2108z"/></g></svg>
+		<p>Last Login : <b>{{this.loginTime}}</b></p>
+		<!-- <button class="btn btn-danger" (click)="logout()">Sign Out</button>
+		 --><!-- <h6>Hello, <b>{{userName}}</b></h6> 
+		<h6>Last Log in : <b>{{loginTime}}</b></h6> -->
+	</div>
+
+</div>
+

@@ -1,0 +1,98 @@
+.serviceDiv{
+ border: .1px solid #eeeeff; 
+ background: rgb(245, 246, 250);
+ min-height:84vh;
+ width:85vw;
+ margin-left: 15vw;
+ text-align: center;	
+ margin-top:12vh;
+}
+
+.full-width{
+	width: 100vw !important;
+	margin-left: 0 !important;
+}
+
+/* ----------------------------- SideBar Styling -------------------------------------------*/
+ .sideBar-wrapper{
+ 	width: 15vw;
+ 	height: 100vh;
+ 	position: fixed;
+ 	left:0;
+ 	top:0;
+ 	text-align: center;
+ 	z-index: 100;
+ }
+ 
+ 	.sideBar-wrapper hr{
+ 		margin: 1% 0 3vh 0;
+ 	}
+ 	
+ 	.user_data{
+ 		background:  #e74c3c;
+ 		height: 12vh;
+ 		width: 100%;
+ 		box-shadow: 0 2px 4px 0 grey;
+ 		padding-top:2vh;
+ 	}
+ 	
+ 	.user_data_flex_container{
+ 		display:flex;
+ 	}
+ 	
+ 	
+ 	.user_data_display_picture{
+ 		height: 100%;
+ 		width: 25%;
+ 		margin:0 2%;
+ 		transform: tranlateY(3vh);
+ 	}
+ 	
+	 	.user_data_display_picture svg{
+	 		height:100%;
+	 		color: white;
+	 	}
+	 
+	 
+	 .user_data_display_content{
+	 	display: inline-block;
+	 	text-align: left;
+	 }
+	 	
+	 .user_data_display_content p{
+	 	margin: 0;
+	 	color: white;
+	 	font-size: 1.5rem;
+	 }	
+ 	
+ 	#sidebar li{
+ 		position:relative;
+ 		text-align:left;
+ 	}
+ 	
+ 	#sidebar svg{
+ 		height: 5vh;
+ 		fill: white;	
+ 		position: absolute;
+ 		right: 10%;
+ 		top: 25%;
+ 	}
+	
+	.sidebar_icon_text_content li a{
+	    padding: 10px 0 10px 2vw !important;
+		width: 100%;
+	}
+ 	
+ 	.sidebar_icon_text_content svg{
+ 	    float:left;
+ 		left: 0;
+ 		transform: scale(0.6) translateY(-1.5vh);
+ 	}
+ 	
+ 	/* 
+ 	.sideBar-wrapper ul li{
+ 		min-height: 5vh;
+ 		margin-bottom: 1%;
+ 		vertical-align: center;
+ 		padding-top: 5%;
+ 	} */

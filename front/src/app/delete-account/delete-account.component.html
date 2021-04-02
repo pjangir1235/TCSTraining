@@ -1,0 +1,49 @@
+<div style="text-align: center overflow-x:auto;">
+	<h3>Account Details</h3>
+
+	<table *ngIf="account;" width="45%" align="center">
+	<tr>
+			<td>Customer ID</td>
+			<td>{{account.customerID}}</td>
+		</tr>
+		
+		<tr>
+			<td>Account Number</td>
+			<td>{{account.accountNumber}}</td>
+		</tr>
+	
+		<tr>
+			<td>Account Type</td>
+			<td>{{account.type.typeName}}</td>
+		</tr>
+		<tr>
+			<td>Account Status</td>
+			<td>{{account.accountStatus}}</td>
+		</tr>
+		<tr>
+			<td>Account Balance</td>
+			<td>{{convertToFloat(account.balance)}}</td>
+		</tr>
+		
+		<tr>
+			<td>DOC*</td>
+			<td>{{account.doc}}</td>
+		</tr>
+		<tr>
+			<td colspan="2">
+				<button type="button" class="btn btn-danger" (click)="confirmDeleteAccount(account.accountNumber)">Delete</button>
+				<button type="button" class="btn btn-primary" [routerLink]="['/viewAccount']">Cancel</button>
+
+			</td>
+		</tr>
+
+	</table>
+		<span style="font-size:11px; margin-left:-25%">* Date Of creation</span>
+	
+
+	<span style="color: green; font-size: 15px;">{{message}}</span> <span
+		style="color: red; font-size: 15px;">{{errorMessage}}</span>
+
+
+
+</div>

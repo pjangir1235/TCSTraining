@@ -1,0 +1,195 @@
+<div class="container">
+
+	<form (ngSubmit)="updateCustomer()" [formGroup]="updateCustomerForm"
+		method="post" class="form-horizontal"
+		style="margin: 0 auto; width: 60%" *ngIf="!edited">
+
+		<h3 class="form_heading">Update Customer Details</h3>
+		
+		<div class="col-lg-6 ">
+		
+			<div class="form-group">
+				<!-- <div class="col-sm-4" > -->
+				<label> <span style="color: red;">*</span> SSN ID:</label>
+				<!-- </div> -->
+				<!-- <div class="col-sm-8">
+				 -->
+				 	<input type="text" formControlName="ssnId" class="form-control" disabled
+						id="{{ (f['ssnId'].valid)? 'validField': '' }}{{ (!f['ssnId'].valid && f['ssnId'].touched)? 'invalidField': '' }}">
+					<span style="color: red;"
+						*ngIf="!f['ssnId'].valid    && f['ssnId'].touched">SSNID is
+						Required</span>
+				<!-- </div> -->
+			</div>
+
+			<div class="form-group">
+				<!-- <div class="col-sm-4"> -->
+
+				<label><span style="color: red;">*</span> Customer Name:</label>
+				<!-- 			</div>-->
+				<!-- <div class="col-sm-8"> -->
+
+				<input type="text" formControlName="name" class="form-control"
+					id="{{ (f['name'].valid)? 'validField': '' }}{{ (!f['name'].valid && f['name'].touched)? 'invalidField': '' }}">
+				<span style="color: red;"
+					*ngIf="!f['name'].valid   && f['name'].touched">Name is
+					Required</span>
+				<!-- </div> -->
+			</div>
+
+
+			<div class="form-group">
+
+				<!-- <div class="col-sm-4"> -->
+
+				<label><span style="color: red;">*</span> Customer DOB:</label>
+				<!-- </div> -->
+				<!-- <div class="col-sm-8"> -->
+				<input type="date" formControlName="dob" class="form-control"
+					id="{{ (f['dob'].valid)? 'validField': '' }}{{ (!f['dob'].valid && f['dob'].touched)? 'invalidField': '' }}">
+				<span style="color: red;"
+					*ngIf="!f['dob'].valid   && f['dob'].touched">DOB is
+					Required</span>
+				<!-- </div> -->
+			</div>
+
+
+			<div class="form-group">
+				<!-- <div class="col-sm-4"> -->
+				<label> <span style="color: red;">*</span> Customer Email:</label>
+				<!-- </div> -->
+				<!-- <div class="col-sm-8"> -->
+				<input type="text" formControlName="email" class="form-control"
+					id="{{ (f['email'].valid)? 'validField': '' }}{{ (!f['email'].valid && f['email'].touched)? 'invalidField': '' }}">
+				<span style="color: red;"
+					*ngIf="!f['email'].valid  && f['email'].touched">Email is
+					Required</span>
+				<!-- </div> -->
+			</div>
+
+			<div class="form-group">
+				<!-- <div class="col-sm-4"> -->
+				<label><span style="color: red;">*</span> Customer Contact:</label>
+				<!-- </div> -->
+				<!-- <div class="col-sm-8"> -->
+				<input type="text" formControlName="contact" class="form-control"
+					id="{{ (f['contact'].valid)? 'validField': '' }}{{ (!f['contact'].valid && f['contact'].touched)? 'invalidField': '' }}">
+				<span style="color: red;"
+					*ngIf="!f['contact'].valid  && f['contact'].touched">Contact
+					is Required</span><br>
+				<!-- </div> -->
+			</div>
+			<div class="form_col_1"></div>
+			
+		</div>
+		
+		<div class="col-lg-6">
+
+			<div class="form-group">
+				<!-- <div class="col-sm-4"> -->
+				<label> <span style="color: red;">*</span> Customer Address
+					Line1:</label>
+				<!-- </div> -->
+				<!-- <div class="col-sm-8"> -->
+				<input type="text" formControlName="address1" class="form-control"
+					id="{{ (f['address1'].valid)? 'validField': '' }}{{ (!f['address1'].valid && f['address1'].touched)? 'invalidField': '' }}">
+				<span style="color: red;"
+					*ngIf="!f['address1'].valid  && f['address1'].touched">Address
+					is Required</span>
+				<!-- </div> -->
+			</div>
+
+			<div class="form-group">
+				<!-- <div class="col-sm-4"> -->
+				<label>Customer Address Line 2:</label>
+				<!-- </div> -->
+				<!-- <div class="col-sm-8"> -->
+				<input type="text" formControlName="address2" class="form-control">
+				<!-- </div> -->
+			</div>
+
+
+
+
+			<div class="form-group">
+				<!-- <div class="col-sm-4"> -->
+				<label> <span style="color: red;">*</span> Customer City:</label>
+				<!-- </div> -->
+				<!-- <div class="col-sm-8"> -->
+				<select formControlName="city" class="form-control" 
+					id="{{ (f['city'].valid) && f['city'].touched? 'validField': '' }}
+					{{ (!f['city'].valid && f['city'].touched)? 'invalidField': '' }} " [value]="city">
+					<option value="1" selected="selected">Trivandrum</option>
+				</select> <span style="color: red;"
+					*ngIf="!f['city'].valid   && f['city'].touched">City is
+					Required</span>
+				<!-- </div> -->
+			</div>
+
+			<div class="form-group">
+				<!-- <div class="col-sm-4"> -->
+				<label> <span style="color: red;">*</span> Customer Pin
+					Code:</label>
+				<!-- </div> -->
+				<!-- <div class="col-sm-8"> -->
+				<input type="text" formControlName="pincode" class="form-control"
+					id="{{ (f['pincode'].valid)? 'validField': '' }}{{ (!f['pincode'].valid && f['pincode'].touched)? 'invalidField': '' }}">
+				<span style="color: red;"
+					*ngIf="!f['pincode'].valid    && f['pincode'].touched">Pin
+					Code is Required</span>
+				<!-- </div> -->
+			</div>
+		</div>
+		<!-- <div class="col-sm-4"></div> -->
+		<!-- <div class="col-sm-8"> -->
+		<button type="submit" class="btn btn-primary"
+			[disabled]="!this.updateCustomerForm.valid">Update Customer</button>
+		<!-- </div> -->
+	</form>
+		<label  style="color: red;  font-weight: normal;font-size: 12px;">Fields marked (*) are mandatory</label>
+		
+</div>
+<div class="formError" *ngIf="formError" style="color:red">
+	<Span>{{formErrorData}}</Span>
+</div>
+
+<div *ngIf="stsMsg!=null && edited"
+	style="color: green; text-align: center">
+	<h5>{{stsMsg}}</h5>
+
+	<table>
+		<tr>
+			<td>Customer ID:</td>
+			<td>{{updatedCustId}}</td>
+		</tr>
+		<tr>
+			<td>Customer SSN ID:</td>
+			<td>{{updatedCustomerSSN}}</td>
+		</tr>
+		<tr>
+			<td>Customer Name:</td>
+			<td>{{updatedCustomerName}}</td>
+		</tr>
+		<tr>
+			<td>Customer DOB:</td>
+			<td>{{updatedCustomerDOB}}</td>
+		</tr>
+		<tr>
+			<td>Customer Email:</td>
+			<td>{{updatedCustomerEmail}}</td>
+		</tr>
+		<tr>
+			<td>Customer Contact:</td>
+			<td>{{updatedCustomerContact}}</td>
+		</tr>
+		<tr>
+			<td>Customer Address:</td>
+			<td>{{updatedCustomerAddress}}</td>
+		</tr>
+	</table>
+	
+	<br>
+		<div class="row">
+			<input type="button" value="Go Back" class="btn btn-warning" routerLink="/viewCustomer"	>
+		</div>
+</div>

@@ -1,0 +1,44 @@
+ 
+ /*
+ .header {
+	height: 57px;
+	min-height: 57px;
+	max-height: 57px;
+	position: relative;
+
+	border-top-left-radius: 8px;
+	border-top-right-radius: 8px;
+	 
+	  background-color: #5b5b5b; 
+	  
+} 
+
+.middle {
+	height: 580px;
+	min-height: 100px;
+	max-height: 570px;
+	position: relative;
+	border: 1.5px solid  grey;
+}
+
+.footer {
+	height: 20px;
+	border-left: 1.5px solid  grey;
+	border-right: 1.5px solid  grey;
+	border-bottom: 1.5px solid  grey;
+	min-height: 20px;
+	max-height: 20px;
+	position: relative;
+	background-color: #5b5b5b;
+	border-bottom-left-radius: 8px;
+	border-bottom-right-radius: 8px;
+}
+
+.mainDesign {
+	margin-left:25px;
+	margin-top:25px;
+	width: 1355px;
+	min-width: 1200px;
+	max-width: 1400px;
+} 
+*/

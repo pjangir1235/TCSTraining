@@ -1,0 +1,102 @@
+.create_account{
+	width:80vw;
+}
+
+.frm-label{
+	min-width:100%;
+	font-family:'Poppins', sans-serif;
+	font-weight: 500;
+	text-align: left;
+}
+
+.frm-label span{
+	color: red;
+	margin-right:1vh;
+}
+
+hr{
+	margin:1vh;
+}
+
+input,select{
+	width:95%;
+	height:5vh;
+	border-radius: 5px;
+	margin-bottom:2vh;
+	padding-left:1vw;
+	border: 1px solid rgba(0,0,0,0.1);
+	box-shadow: 0 1px 2px 0 rgba(0,0,0,0.1);
+}
+
+.formBlock{
+	padding: 10px;
+	width:30%;
+	margin:0 auto;
+	background: #fff;
+	box-shadow: 0 2px 4px 0 grey;
+}
+
+.formBlock2{
+	padding: 10px;
+	width:30%;
+	margin:0 auto;
+	background: #fff;
+	box-shadow: 0 2px 4px 0 grey;
+}
+
+.subForm{
+	position:relative;
+	margin:2px;
+}
+
+.submit-abs button{
+	position:absolute;
+	right:0;
+	height:5vh;
+}
+
+.main-head{
+	width:30%;
+	text-align:center;
+	background:rgb(53, 59, 72);
+	margin:0 auto;
+	padding:10px;
+	margin-top:15px;
+	font-weight:700;
+	color:#fff;
+	font-family: sans-serif;
+	font-size:16px;
+}
+
+.nav-link{
+	cursor:pointer;
+	color:#733f0b;
+	text-decoration:underline
+}
+
+.succ-info{
+	color:green;
+}
+
+.acc-info{
+	width:80%;
+}
+
+.half-div{
+	width:50%;
+	float:left;
+	padding: 10px;
+	text-align:left;
+}
+
+
+
+#validField{
+	border:1px solid rgba(46, 204, 113,0.5);
+	box-shadow: 0 2px 4px 0 rgba(46, 204, 113,0.2);
+}
+
+#invalidField{
+	box-shadow: 0 1px 4px 0 rgba(231, 76, 60,0.4);
+	border:1px solid rgba(231, 76, 60,0.4);
+}

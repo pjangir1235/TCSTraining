@@ -1,0 +1,124 @@
+<div class="container">
+	<h1>View Transaction</h1>
+		<label  style="color: red; margin-left: -60%;  font-weight: normal;font-size: 12px;">Fields marked (*) are mandatory</label>
+	
+	<br>
+	<div class="form-group row"
+		style="width: 100%; margin: 0 auto; padding: 20px">
+		<div class="col-sm-4">
+			<label style="color: red;">*</label><label>Enter Account Number</label>
+		</div>
+		<div class="col-sm-4">
+			<input type="text" class="form-control" [(ngModel)]="accountNumber"
+				[disabled]="!isAccountNotValid"> <label
+				style="color: red; padding: 10px" *ngIf="isAccountNotValid">{{errorMessage}}</label>
+		</div>
+		<div class="col-sm-4" align="left">
+			<button class="btn btn-primary" (click)="searchAccount()"
+				value="Search" [disabled]="!isAccountNotValid">Search</button>
+		</div>
+	</div>
+	<div *ngIf="!isAccountNotValid">
+		<div class="form-group" style="padding: 20px">
+
+			<div>
+				<div class="col-sm-4">
+					<label>View Account Statement </label>
+				</div>
+				<div class="col-sm-4">
+					<label class="radio-inline"><input type="radio"
+						name="option" (click)="toggleNOT()">No of Transactions</label>
+				</div>
+				<div class="col-sm-4">
+					<label class="radio-inline"><input type="radio"
+						name="option" (click)="toggleDATE()">Date</label>
+				</div>
+
+
+			</div>
+
+		</div>
+		<div class="container" style="padding: 20px" *ngIf="transactionOption">
+			<div style="padding: 10px;">
+				<label>Get Last <select [(ngModel)]="noOfTransaction">
+						<option *ngFor="let num of numbers" [value]="num">{{num}}</option>
+				</select> Transactions
+				</label>
+			</div>
+		</div>
+
+		<div class="container" style="padding: 20px" *ngIf="dateOption">
+			<div style="padding: 10px;">
+				<label>Start Date</label> &nbsp;<input type="date"
+					[(ngModel)]="startDate"> &nbsp; <label>End Date</label>
+				&nbsp;<input type="date" [(ngModel)]="endDate">
+
+			</div>
+		</div>
+
+		<button class="btn btn-primary" *ngIf="transactionOption||dateOption"
+			(click)="getStatement()">Submit</button>
+	</div>
+	<div *ngIf="dateOption && dateError!=''" style="padding: 20px">
+		<label style="color: red">{{dateError}}</label>
+	</div>
+</div>
+
+
+<table id="table_id" class="table"
+	*ngIf="response && response.status && response.object.length>0">
+
+	<thead>
+		<tr>
+			<th>S.No</th>
+			<th>Transaction Id</th>
+			<th>Date</th>
+			<th>Type</th>
+			<th>Source</th>
+			<th>Target</th>
+			<th>Amount($)</th>
+
+		</tr>
+	</thead>
+	<tbody>
+
+		<tr *ngFor="let t of pagedItems , let i = index" align="left">
+			<td>{{i+1}}</td>
+			<td>{{t.transactionId}}</td>
+			<td>{{t.date}}</td>
+			<td *ngIf='t.transactionType==1' style="color: green;">Deposit</td>
+			<td *ngIf='t.transactionType==2' style="color: red;">Withdraw</td>
+			<td *ngIf='t.transactionType==3' style="color: red">Transfer</td>
+			<td *ngIf="t.sourceAccountId">{{t.sourceAccountId}}</td>
+			<td *ngIf="!t.sourceAccountId">--</td>
+			<td *ngIf="t.targetAccountId">{{t.targetAccountId}}</td>
+			<td *ngIf="!t.targetAccountId">--</td>
+
+			<td><strong>{{t.amount}}</strong></td>
+		</tr>
+
+	</tbody>
+
+</table>
+<div class="container text-center">
+	<ul *ngIf="pager.pages && pager.pages.length" class="pagination">
+		<li [ngClass]="{disabled:pager.currentPage === 1}"><a
+			(click)="setPage(1)">First</a></li>
+		<li [ngClass]="{disabled:pager.currentPage === 1}"><a
+			(click)="setPage(pager.currentPage - 1)">Previous</a></li>
+		<li *ngFor="let page of pager.pages"
+			[ngClass]="{active:pager.currentPage === page}"><a
+			(click)="setPage(page)">{{page}}</a></li>
+		<li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+			<a (click)="setPage(pager.currentPage + 1)">Next</a>
+		</li>
+		<li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+			<a (click)="setPage(pager.totalPages)">Last</a>
+		</li>
+	</ul>
+</div>
+
+<h4 *ngIf="response">
+	<label *ngIf="!response.status || response.object.length<=0">No
+		Data Found</label>
+</h4>

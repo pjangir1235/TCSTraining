@@ -1,0 +1,50 @@
+<div *ngIf="!status">
+	<div style="height=100%" class="wrap-data">
+		<img src="../../assets/images/bg.jpg">
+	<div class="loginContent">
+		<div class="formDiv card">
+			<h5 class="card-header info-color white-text text-center py-4">
+				<strong>Log In</strong>
+			</h5>
+
+			<!--Card content-->
+			<div class="card-body px-lg-5 pt-0">
+
+				<!-- Form -->
+				<form class="text-center" [formGroup]="frm" style="color: #757575;">
+
+					<!-- Email -->
+					<div class="md-form">
+						<input type="text" id="name" name="name" class="form-control"
+							placeholder="Username" formControlName="name" required>
+							<div class="warning" *ngIf="displayToggle"><div class="warning" style="float:right" *ngIf="nameWar">*Name is required</div></div>
+
+					</div>
+
+					<!-- Password -->
+					<div class="md-form">
+						<input type="password" name="password"
+							id="materialLoginFormPassword" class="form-control"
+							placeholder="Password" formControlName="pass" required>
+							<div class="warning" *ngIf="displayToggle"><div class="warning" style="float:right" *ngIf="passWar">*Password is required</div></div>
+
+					</div>
+					<div class="md-form">
+						<button type="submit" class="loginSubmit" (click)="userLogin()">Log
+							In</button>
+					</div>
+					
+				</form>
+				<div class="warning stick-bottom text-center" *ngIf="invalData">*Invalid credentials</div>
+			</div>
+		</div>
+		<!-- <div class="warning" *ngIf="displayToggle">
+			<div class="warning" *ngIf="nameWar">*Name is required</div>
+			<div class="warning" *ngIf="passWar">*Password is required</div>
+
+
+		</div> -->
+		<!-- <div class="warning" *ngIf="invalData" style="bottom:5px">*Invalid credentials</div> -->
+	</div>
+</div>
+</div>

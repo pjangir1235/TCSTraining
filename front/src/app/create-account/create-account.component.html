@@ -1,0 +1,84 @@
+<div class="main-head text-center"><h3>Create Account</h3></div>
+<div class="war-info formBlock2"style="text-align: left" *ngIf="accCreateSts==null || !accCreateSts ">
+	<span class="warning" style="text-align:left; color:red">Fields marked with (*) are mandatory.</span>
+</div>
+<div class="formBlock2 text-center" *ngIf="accCreateSts==null || !accCreateSts ">
+
+	<div class="subForm" >
+		<label class="frm-label"><span>*</span>Search Customer by Id:</label> <input
+			type="number" class="searchBarInput" [formControl]="customerId" min="0"> <span
+			class="submit-abs"><button type="submit" class="btn btn-primary"
+				value="submit" (click)="searchCustomer()">Search</button></span>
+
+	</div>
+
+</div>
+<div class="war-info formBlock2" *ngIf="custExist!=null && !custExist && !(accTypes==[]) && !accCreateSts && !invalidCustId">
+	<span class="warning">{{this.userRes.message}}</span>
+
+</div>
+<div class="war-info formBlock2" *ngIf="invalidCustId">
+	<span class="warning" [innerHtml]="invalidCustWar"></span>
+
+</div>
+
+<div class="formBlock text-center" *ngIf="custExist && !(accTypes==[]) && !accCreateSts">
+	<form [formGroup]="newAccForm" (submit)="createAccount()">
+		<div class="subForm">
+			<label class="frm-label"><span>*</span>Customer Id:</label><input type="text" placeholder="Customer ID"
+				formControlName="customerID" [(ngModel)]="custID" disabled>
+		</div>
+		<div class="subForm">
+			<label class="frm-label"><span>*</span>Account Type:</label>
+			 <select
+				formControlName="typeId" #t (change)="showMinBal(t.value)">
+				<option *ngFor="let v of accTypes" [value]="v.typeId">{{v.typeName}}</option>
+			</select>
+		</div>
+		<div class="subForm">
+			<label class="frm-label"><span>*</span>Initial Balance(&#36;):</label> <input type="number"
+				formControlName="balance" min="0">
+		</div>
+		<div class="subForm">
+			<button type="submit" class="btn btn-primary" value="submit" [disabled]="!newAccForm.valid">Submit</button>
+		</div>
+		
+	</form>
+</div>	
+ <div *ngIf="(minBal>0) && custExist && (!accCreateSts || accCreateSts==null)" style="margin-top: 20px">Minimum balance for this account:{{minBal}} &#36;</div>
+
+<div class="war-info formBlock2" *ngIf="invalidAccDetails || invalidBal" [innerHtml]="warMsg" style="color:red; font-size:12px">
+	
+
+</div>
+
+<div class="formBlock2" *ngIf="accCreateSts" style="overflow: hidden; ">
+	<div class="col-md-12">
+	<div class="half-div">Account No</div>
+	<div class="half-div">{{this.userRes.object.accountNumber}}</div>
+
+	<div class="half-div">Account Status</div>
+	<div class="half-div">{{this.userRes.object.accountStatus}}</div>
+	
+	<div class="half-div">Account Balance</div>
+	<div class="half-div">{{this.userRes.object.balance}}</div>
+	
+	<div class="half-div">Customer Id</div>
+	<div class="half-div">{{this.userRes.object.customerID}}</div>
+	
+	<div class="half-div">Date Of Creation</div>
+	<div class="half-div">{{this.userRes.object.doc}}</div>
+	
+	<div class="half-div">Last Updated</div>
+	<div class="half-div">{{this.userRes.object.lastUpdated}}</div>
+	
+	<div class="half-div">Account Type</div>
+	<div class="half-div">{{this.userRes.object.typeId==1?'Savings Account':'Current Account'}}</div>
+	</div>
+</div>
+
+<div class="war-info formBlock2 succ-info" *ngIf="accCreateSts!=null">
+	<span class="warning" *ngIf="accCreateSts">Account created successfully.</span>
+	<span class="warning" *ngIf="!accCreateSts">{{this.userRes.message}}</span>
+
+</div>

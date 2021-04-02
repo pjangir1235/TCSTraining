@@ -1,0 +1,104 @@
+<div class="container" *ngIf="mainForm">
+	
+	
+	<h1>Deposit</h1>
+	<label  style="color: red; margin-left: -60%;  margin-bottom:3%; font-weight: normal;font-size: 12px;">Fields marked (*) are mandatory</label>
+	
+	<form method="post" class="form-horizontal" [formGroup]="depositForm"
+		(ngSubmit)="processTransaction()">
+
+		<div class="row">
+			<div class="form-group">
+				<div class="col-sm-2">
+					<label style="color: red;">*</label><label>Account No.</label>
+				</div>
+				<div class="col-sm-5">
+					<input class="form-control" type="text" name="target_account"
+						formControlName="targetAccountId" (keyup)="checkTargetAccount()"
+							(change)="checkAccount()"> <label style="color: red">
+						{{targetErrorMessage}} </label>
+						<label style="color: green">
+						{{targetMessage}} </label>
+				</div>
+
+				<div class="col-sm-1" style="text-align: left">
+					<span *ngIf="isTargetAccountValid"
+						class="glyphicon glyphicon-ok icon-success"></span> <span
+						*ngIf="isTargetAccountNotValid"
+						class="glyphicon glyphicon-remove icon-fail"> </span>
+				</div>
+			</div>
+
+		</div>
+		<div class="row">
+			<div class="form-group">
+				<div class="col-sm-2">
+					<label style="color: red;">*</label><label>Amount</label>
+				</div>
+				<div class="col-sm-5 form_block ">
+					<span class="input-group-addon">$</span>
+					<div class="input-group"> <input
+							class="form-control" type="text" name="amount"
+							formControlName="amount" (keyup)="checkAmount()" placeholder="Amount"> <label
+							style="color: red" *ngIf="isError">{{error}}</label>
+					</div>
+				</div>
+			</div>
+
+		</div>
+
+		<div class="row">
+			<input type="submit" name="submit" value="Submit"
+				class="btn btn-primary" [disabled]="!isTargetAccountValid">
+		</div>
+	</form>
+</div>
+
+
+<div class="container">
+
+	<div class="result_data" *ngIf="edited">
+
+
+
+
+		<div style="color: green; text-align: center">
+			<h3>Deposit Detail</h3>
+		</div>
+
+		<table>
+			<tr>
+				<td>Transaction ID :</td>
+				<td>{{transactionId}}</td>
+			</tr>
+
+			<tr>
+				<td>To Account :</td>
+				<td>{{toAccount}}</td>
+			</tr>
+			<tr>
+				<td>Deposit Time:</td>
+				<td>{{timestampTransaction}}</td>
+			</tr>
+			<tr>
+				<td>Amount Deposit</td>
+				<td>&#36;&nbsp;{{amountTransfer}}</td>
+			</tr>
+
+
+		</table>
+		<br>
+		<div class="row">
+			<input type="button" value="Go Back" class="btn btn-warning"
+				(click)="changeStatus()">
+		</div>
+	</div>
+
+</div>
+
+
+<div class="alert
+	alert-danger"
+	*ngIf="this.transaction && !this.transaction.status">
+	<strong>Transaction Failed !</strong>
+</div>

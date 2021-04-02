@@ -1,0 +1,104 @@
+<div class="serviceDiv" [ngClass] = "{'full-width': !status}">
+	
+	<div *ngIf="!mainStatus && !status">
+		<app-login></app-login>
+	</div>
+	
+	<div *ngIf="mainStatus && status" class="mainDesign">
+	
+				<!-- -------------- CustomerExecutive SideBar and Content----------------------------- -->
+				<div *ngIf="userData.userType=='customerexecutive'">
+					<div class="sideBar-wrapper">
+					
+						<div class="user_data">
+							<span class="user_data_flex_container">
+								<span class="user_data_display_picture">
+									<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" viewBox="0 0 100 125" enable-background="new 0 0 100 100" xml:space="preserve"><g><path fill="#fff" d="M50,5C25.187,5,5,25.187,5,50s20.187,45,45,45s45-20.187,45-45S74.813,5,50,5z M50,91.537   C27.097,91.537,8.463,72.903,8.463,50S27.097,8.463,50,8.463S91.537,27.097,91.537,50S72.903,91.537,50,91.537z"/><path d="M50.003,54.795c9.596,0,16.12-7.783,16.12-17.382c0-9.601-6.524-17.381-16.12-17.381c-9.602,0-16.126,7.78-16.126,17.381   C33.877,47.012,40.401,54.795,50.003,54.795z"/><path d="M63.022,53.654c-3.442,3.091-7.948,4.918-13.02,4.918c-5.074,0-9.583-1.827-13.025-4.918   c-8.187,4.477-13.839,12.976-14.267,22.859C29.634,83.637,39.306,88.077,50,88.077s20.366-4.44,27.292-11.563   C76.864,66.63,71.209,58.131,63.022,53.654z"/></g></svg>
+								</span>
+								
+								<span class="user_data_display_content">
+									<p><b>{{this.userData.userName}}</b></p>
+									<p>{{this.userData.userType == 'customerexecutive' ? 'CustomerExecutive': 'Cashier/Teller'}}</p>
+								</span>
+							</span>					
+						</div>
+						
+					
+						<!-- Sidebar -->
+						<nav id="sidebar">
+							<div class="sidebar-header">
+								<h3>MENU</h3>
+								<hr>
+							</div>
+					
+							<ul class="list-unstyled components">
+					
+								<li class="active"><a href="#homeSubmenu" data-toggle="collapse"
+									aria-expanded="false" class="dropdown-toggle">Customer Services <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" viewBox="-434 236 90 112.5" style="enable-background:new -434 236 90 90;" xml:space="preserve"><g><path d="M-369.6,272.9c0,0.3-0.1,0.6-0.4,0.9l-18.1,18.1c-0.3,0.3-0.6,0.4-0.9,0.4s-0.6-0.1-0.9-0.4l-18.1-18.1   c-0.3-0.3-0.4-0.6-0.4-0.9s0.1-0.6,0.4-0.9l1.9-1.9c0.3-0.3,0.6-0.4,0.9-0.4s0.6,0.1,0.9,0.4l15.3,15.3l15.3-15.3   c0.3-0.3,0.6-0.4,0.9-0.4s0.6,0.1,0.9,0.4l1.9,1.9C-369.8,272.3-369.6,272.6-369.6,272.9z"/></g></svg></a>
+									<ul class="collapse list-unstyled" id="homeSubmenu">
+										<li><a routerLink="/addCustomer">Create Customer</a></li>
+										<li><a routerLink="/viewCustomer">List Customers</a></li>
+									</ul></li>
+								<li><a href="#pageSubmenu" data-toggle="collapse"
+									aria-expanded="false" class="dropdown-toggle">Account Service <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" viewBox="-434 236 90 112.5" style="enable-background:new -434 236 90 90;" xml:space="preserve"><g><path d="M-369.6,272.9c0,0.3-0.1,0.6-0.4,0.9l-18.1,18.1c-0.3,0.3-0.6,0.4-0.9,0.4s-0.6-0.1-0.9-0.4l-18.1-18.1   c-0.3-0.3-0.4-0.6-0.4-0.9s0.1-0.6,0.4-0.9l1.9-1.9c0.3-0.3,0.6-0.4,0.9-0.4s0.6,0.1,0.9,0.4l15.3,15.3l15.3-15.3   c0.3-0.3,0.6-0.4,0.9-0.4s0.6,0.1,0.9,0.4l1.9,1.9C-369.8,272.3-369.6,272.6-369.6,272.9z"/></g></svg></a>
+									<ul class="collapse list-unstyled" id="pageSubmenu">
+										<li><a routerLink="/addAccount">Add Account</a></li>
+										<li><a routerLink="/viewAccount">List Accounts</a></li>
+									</ul></li>
+								
+							</ul>
+						</nav>
+					</div>
+					
+					
+					<router-outlet></router-outlet>
+				</div>	
+					
+				<!-- -------------- Cashier / Teller SideBar and Content----------------------------- -->				
+				<div  *ngIf="userData.userType=='teller'">
+				
+				<div class="sideBar-wrapper">
+						<!-- Sidebar -->
+						
+						<div class="user_data">
+							<span class="user_data_flex_container">
+								<span class="user_data_display_picture">
+									<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" viewBox="0 0 100 125" enable-background="new 0 0 100 100" xml:space="preserve"><g><path fill="#fff" d="M50,5C25.187,5,5,25.187,5,50s20.187,45,45,45s45-20.187,45-45S74.813,5,50,5z M50,91.537   C27.097,91.537,8.463,72.903,8.463,50S27.097,8.463,50,8.463S91.537,27.097,91.537,50S72.903,91.537,50,91.537z"/><path d="M50.003,54.795c9.596,0,16.12-7.783,16.12-17.382c0-9.601-6.524-17.381-16.12-17.381c-9.602,0-16.126,7.78-16.126,17.381   C33.877,47.012,40.401,54.795,50.003,54.795z"/><path d="M63.022,53.654c-3.442,3.091-7.948,4.918-13.02,4.918c-5.074,0-9.583-1.827-13.025-4.918   c-8.187,4.477-13.839,12.976-14.267,22.859C29.634,83.637,39.306,88.077,50,88.077s20.366-4.44,27.292-11.563   C76.864,66.63,71.209,58.131,63.022,53.654z"/></g></svg>
+								</span>
+								
+								<span class="user_data_display_content">
+									<p><b>{{this.userData.userName}}</b></p>
+									<p>{{this.userData.userType == 'customerexecutive' ? 'CustomerExecutive': 'Cashier/Teller'}}</p>
+								</span>
+							</span>					
+						</div>
+						
+						<nav id="sidebar">
+							<div class="sidebar-header">
+								<h3>MENU</h3>
+								<hr>
+							</div>
+					
+							<ul class="list-unstyled components sidebar_icon_text_content">
+					
+									<li><a routerLink="/deposit"><i class="fa fa-plus fa-lg"></i>&nbsp;Deposit</a></li>
+									<li><a routerLink="/withdraw"><i class="fa fa-minus fa-lg"></i>&nbsp;Withdraw</a></li>
+									<li><a routerLink="/transfer"><i
+											class="fa fa-handshake-o fa-lg"></i>&nbsp;Transfer Amount</a></li>
+									<li><a routerLink="/viewTransaction"><i
+											class="fa fa-book fa-lg"></i>Transaction Summary</a></li>
+				
+								
+							</ul>
+						</nav>
+					</div>
+					
+				<router-outlet></router-outlet>
+				
+				 </div>
+
+	</div>
+	
+	
+
+</div>
